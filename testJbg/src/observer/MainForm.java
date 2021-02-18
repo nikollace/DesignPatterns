@@ -7,17 +7,15 @@ package observer;
 
 /**
  *
- * @author Mirko
+ * @author Nikola
  */
-public class forma extends javax.swing.JDialog implements Obesrver {
+public class MainForm extends javax.swing.JFrame {
 
     /**
-     * Creates new form forma
+     * Creates new form MainForm
      */
-    public forma(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public MainForm() {
         initComponents();
-        
     }
 
     /**
@@ -29,13 +27,14 @@ public class forma extends javax.swing.JDialog implements Obesrver {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtPolje = new javax.swing.JTextField();
+        btnOpenNewForm = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtPolje.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtPoljeKeyReleased(evt);
+        btnOpenNewForm.setText("Open new form");
+        btnOpenNewForm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpenNewFormActionPerformed(evt);
             }
         });
 
@@ -44,24 +43,26 @@ public class forma extends javax.swing.JDialog implements Obesrver {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(txtPolje, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGap(142, 142, 142)
+                .addComponent(btnOpenNewForm)
+                .addContainerGap(151, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(96, 96, 96)
-                .addComponent(txtPolje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(184, Short.MAX_VALUE))
+                .addGap(98, 98, 98)
+                .addComponent(btnOpenNewForm)
+                .addContainerGap(179, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtPoljeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPoljeKeyReleased
-        Repozitorijum.getInstance().obavesti(txtPolje.getText());
-    }//GEN-LAST:event_txtPoljeKeyReleased
+    private void btnOpenNewFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenNewFormActionPerformed
+        forma forma = new forma(null, false);
+        Repozitorijum.getInstance().dodaj(forma);
+        forma.setVisible(true);
+    }//GEN-LAST:event_btnOpenNewFormActionPerformed
 
     /**
      * @param args the command line arguments
@@ -80,38 +81,25 @@ public class forma extends javax.swing.JDialog implements Obesrver {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(forma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(forma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(forma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(forma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
-        /* Create and display the dialog */
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                forma dialog = new forma(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+                new MainForm().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField txtPolje;
+    private javax.swing.JButton btnOpenNewForm;
     // End of variables declaration//GEN-END:variables
-
-    @Override
-    public void obavesti(String text) {
-        txtPolje.setText(text);
-    }
-
 }

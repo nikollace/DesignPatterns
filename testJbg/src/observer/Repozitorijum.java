@@ -32,8 +32,6 @@ public class Repozitorijum {
 
     public void dodaj(forma dij) {
         lista.add(dij);
-                System.out.println(lista.size());
-
     }
 
     public void obavesti(String text) {
